@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الصف السادس - القمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            background: linear-gradient(45deg, #eeeff1 0%, #dae0e8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .grade6-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #1e1b4b;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 35px;
+            padding: 35px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            margin-bottom: 50px;
+        }
+
+        .table-wrapper { overflow-x: auto; }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 12px;
+        }
+
+        th {
+            background: #1e1b4b;
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 15px -3px rgba(30, 27, 75, 0.3);
+        }
+
+        .day-label {
+            background: #fff;
+            color: #1e1b4b;
+            font-weight: 900;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .sub-pill {
+            padding: 18px;
+            text-align: center;
+            border-radius: 15px;
+            font-weight: 700;
+            color: #1f2937;
+            transition: 0.4s all ease;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .sub-pill:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .arabic { border-right: 8px solid #059669; background: #ecfdf5; }
+        .math { border-right: 8px solid #dc2626; background: #fef2f2; }
+        .science { border-right: 8px solid #2563eb; background: #eff6ff; }
+        .english { border-right: 8px solid #7c3aed; background: #f5f3ff; }
+        .social { border-right: 8px solid #d97706; background: #fffbeb; }
+        .ict { border-right: 8px solid #0891b2; background: #ecfeff; }
+        .pe { border-right: 8px solid #4b5563; background: #f9fafb; }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .activity-card:hover {
+            border-color: #1e1b4b;
+            background: #f8fafc;
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: #f1f5f9;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .details h4 { margin: 0; color: #1e1b4b; font-size: 1.3rem; }
+        .details p { margin: 5px 0 0; color: #64748b; font-size: 0.9rem; }
+
+        .finish-btn {
+            display: block;
+            width: fit-content;
+            margin: 50px auto;
+            padding: 20px 60px;
+            background: #1e1b4b;
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 900;
+            font-size: 1.4rem;
+            box-shadow: 0 20px 40px rgba(30, 27, 75, 0.4);
+            transition: 0.4s;
+        }
+
+        .finish-btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            background: #312e81;
+        }
+
+        @media (max-width: 768px) {
+            table { border-spacing: 5px; }
+            .sub-pill { padding: 10px; font-size: 0.8rem; }
+            th { padding: 10px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="grade6-title">🎓 جدول حصص الصف السادس الابتدائي</h1>
+
+    <section class="glass-box">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>اليوم</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="day-label">الأحد</td>
+                        <td class="sub-pill math">رياضيات</td>
+                        <td class="sub-pill math">رياضيات</td>
+                        <td class="sub-pill arabic">عربي</td>
+                        <td class="sub-pill science">علوم</td>
+                        <td class="sub-pill social">دراسات</td>
+                        <td class="sub-pill english">إنجليزي</td>
+                    </tr>
+                    <tr>
+                        <td class="day-label">الاثنين</td>
+                        <td class="sub-pill arabic">عربي</td>
+                        <td class="sub-pill arabic">عربي</td>
+                        <td class="sub-pill ict">ICT</td>
+                        <td class="sub-pill math">رياضيات</td>
+                        <td class="sub-pill english">إنجليزي</td>
+                        <td class="sub-pill pe">رياضة</td>
+                    </tr>
+                    <tr>
+                        <td class="day-label">الثلاثاء</td>
+                        <td class="sub-pill science">علوم</td>
+                        <td class="sub-pill science">علوم</td>
+                        <td class="sub-pill arabic">عربي</td>
+                        <td class="sub-pill math">رياضيات</td>
+                        <td class="sub-pill social">دراسات</td>
+                        <td class="sub-pill english">إنجليزي</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <h2 class="grade6-title"> برامج التميز والأنشطة</h2>
+    
+    <div class="activity-grid">
+        <div class="activity-card">
+            <div class="icon-circle"></div>
+            <div class="details">
+                <h4>نادي الروبوتات</h4>
+                <p>برمجة وتركيب الروبوتات الذكية</p>
+            </div>
+        </div>
+        <div class="activity-card">
+            <div class="icon-circle"></div>
+            <div class="details">
+                <h4>ريادة الأعمال</h4>
+                <p>كيف تخطط لمشروعك الصغير</p>
+            </div>
+        </div>
+        <div class="activity-card">
+            <div class="icon-circle"></div>
+            <div class="details">
+                <h4>البحث العلمي</h4>
+                <p>إعداد الأبحاث للمسابقات الوطنية</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html" class="finish-btn">العودة للرئيسية </a>
+</div>
+
+</body>
+</html>

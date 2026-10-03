@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الصف الثالث والأنشطة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-gradient);
+            padding: 20px;
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .glass-section {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glass-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 50px rgba(79, 70, 229, 0.08);
+        }
+
+        .main-title {
+            text-align: center;
+            background: var(--primary-gradient);
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 35px;
+            font-weight: 900;
+            font-size: 2.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            background: white;
+            padding: 12px;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 8px;
+            text-align: center;
+        }
+
+        .schedule-table th {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 18px 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.15);
+        }
+
+        .schedule-table td {
+            padding: 16px 10px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .schedule-table td.day {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .schedule-table td:not(.day):hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            position: relative;
+            cursor: default;
+        }
+
+        /* Classes for subjects */
+        .math { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); color: #be123c; }   
+        .arabic { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); color: #15803d; }  
+        .english { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color: #1d4ed8; } 
+        .discovery { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); color: #a16207; } 
+        .religion { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); color: #7e22ce; } 
+        .art { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #c2410c; }    
+        .pe { background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); color: #166534; }      
+        .tech { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #155e75; }    
+        .skills { background: linear-gradient(135deg, #fee140 0%, #fa709a 100%); color: #9d174d; }  
+        .values { background-color: #f1f5f9; color: #475569; border: 2px dashed #cbd5e1; }        
+
+        .activity-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .activity-card-small {
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+        
+        .activity-card-small::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .activity-card-small:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.1);
+        }
+        
+        .activity-card-small:hover::after {
+            transform: scaleX(1);
+        }
+
+        .act-day {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 15px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            letter-spacing: 1px;
+        }
+
+        .act-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .act-info strong {
+            color: var(--text-main);
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .act-info span {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .pagination-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 36px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.45);
+        }
+
+        .arrow-icon {
+            font-style: normal;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .next-btn:hover .arrow-icon {
+            transform: translateX(-6px);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .glass-section { padding: 20px; border-radius: 16px; }
+            .main-title { font-size: 1.6rem; }
+            .schedule-table th, .schedule-table td { padding: 8px 4px; font-size: 0.75rem; }
+            .schedule-table { border-spacing: 3px; }
+            .next-btn { padding: 12px 25px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        
+        <!-- جدول الحصص -->
+        <section id="grade3-schedule" class="glass-section">
+            <h2 class="main-title">📅 جدول حصص الصف الثالث الابتدائي</h2>
+            
+            <div class="table-responsive">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>اليوم / الحصة</th>
+                            <th>الأولى</th>
+                            <th>الثانية</th>
+                            <th>الثالثة</th>
+                            <th>الرابعة</th>
+                            <th>الخامسة</th>
+                            <th>السادسة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="day">الأحد</td>
+                            <td class="math">رياضيات</td>
+                            <td class="arabic">لغة عربية</td>
+                            <td class="arabic">لغة عربية</td>
+                            <td class="english">إنجليزي</td>
+                            <td class="religion">دين</td>
+                            <td class="art">رسم</td>
+                        </tr>
+                        <tr>
+                            <td class="day">الاثنين</td>
+                            <td class="arabic">لغة عربية</td>
+                            <td class="math">رياضيات</td>
+                            <td class="math">رياضيات</td>
+                            <td class="discovery">اكتشف</td>
+                            <td class="english">إنجليزي</td>
+                            <td class="pe">بدنية</td>
+                        </tr>
+                        <tr>
+                            <td class="day">الثلاثاء</td>
+                            <td class="english">إنجليزي</td>
+                            <td class="arabic">لغة عربية</td>
+                            <td class="math">رياضيات</td>
+                            <td class="discovery">اكتشف</td>
+                            <td class="religion">دين</td>
+                            <td class="tech">حاسب آلي</td>
+                        </tr>
+                        <tr>
+                            <td class="day">الأربعاء</td>
+                            <td class="math">رياضيات</td>
+                            <td class="arabic">لغة عربية</td>
+                            <td class="english">إنجليزي</td>
+                            <td class="discovery">اكتشف</td>
+                            <td class="skills">مهارات مهنية</td>
+                            <td class="pe">بدنية</td>
+                        </tr>
+                        <tr>
+                            <td class="day">الخميس</td>
+                            <td class="arabic">لغة عربية</td>
+                            <td class="math">رياضيات</td>
+                            <td class="english">إنجليزي</td>
+                            <td class="values">قيم وأخلاق</td>
+                            <td class="art">نشاط فني</td>
+                            <td class="discovery">اكتشف</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- جدول الأنشطة -->
+        <section id="grade3-activities" class="glass-section">
+            <h2 class="main-title">🌟 جدول الأنشطة الأسبوعي - الصف الثالث</h2>
+            
+            <div class="activity-cards-container">
+                <div class="activity-card-small">
+                    <div class="act-day">الأحد</div>
+                    <div class="act-info">
+                        <strong>النادي الرياضي</strong>
+                        <span>⚽ كرة قدم (فناء المدرسة)</span>
+                    </div>
+                </div>
+
+                <div class="activity-card-small">
+                    <div class="act-day">الاثنين</div>
+                    <div class="act-info">
+                        <strong>نادي المبدعين</strong>
+                        <span>🎨 أشغال يدوية وصلصال</span>
+                    </div>
+                </div>
+
+                <div class="activity-card-small">
+                    <div class="act-day">الثلاثاء</div>
+                    <div class="act-info">
+                        <strong>الصحفي الصغير</strong>
+                        <span>🎤 كتابة مجلة الحائط</span>
+                    </div>
+                </div>
+
+                <div class="activity-card-small">
+                    <div class="act-day">الأربعاء</div>
+                    <div class="act-info">
+                        <strong>نادي العباقرة</strong>
+                        <span>🧪 تجارب علمية بسيطة</span>
+                    </div>
+                </div>
+
+                <div class="activity-card-small">
+                    <div class="act-day">الخميس</div>
+                    <div class="act-info">
+                        <strong>المسرح والموسيقى</strong>
+                        <span>🎭 تدريبات الحفل الختامي</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- زر الانتقال -->
+        <div class="pagination-container">
+            <a href="4.html" class="next-btn">
+                <span>الانتقال للصفحة التالية</span>
+                <i class="arrow-icon">←</i>
+            </a>
+        </div>
+        
+    </div>
+
+</body>
+</html>

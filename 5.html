@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الصف الخامس الابتدائى</title>
+    <style>
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    font-family: 'Cairo', sans-serif;
+}
+
+.schedule-section {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px); 
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+    transition: 0.5s;
+}
+
+.modern-schedule-table th {
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.subject {
+    padding: 18px;
+    border-radius: 18px;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+}
+
+.subject::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.2);
+    transform: rotate(45deg);
+    transition: 0.6s;
+}
+
+.subject:hover::before {
+    left: 100%;
+}
+
+.subject:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.math { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); color: #b91c1c; }
+.arabic { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); color: #065f46; }
+.english { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color: #1e40af; }
+.science { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); color: #5b21b6; }
+.social { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); color: #9a3412; }
+.ict { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.schedule-section {
+    animation: fadeInUp 1s ease-out;
+}
+.act-card {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: 0.5s;
+    position: relative;
+}
+
+.act-card:hover {
+    border-color: #4f46e5;
+    background: #4f46e5;
+}
+
+.act-card:hover h4, .act-card:hover p {
+    color: white; 
+}
+
+.act-icon {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+    transition: 0.5s;
+}
+
+.act-card:hover .act-icon {
+    transform: scale(1.2) rotate(15deg);
+}
+.pagination-container {
+    text-align: center;
+    margin: 50px 0;
+    padding: 20px;
+}
+.pagination-container {
+    text-align: center;
+    margin: 50px 0;
+    padding: 20px;
+}
+
+.next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 35px;
+    background-color: #4f46e5; 
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+    background-color: #3730a3;
+    transform: translateX(-10px); 
+    box-shadow: 0 15px 25px rgba(79, 70, 229, 0.4);
+}
+
+.arrow-icon {
+    font-style: normal;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.next-btn:hover .arrow-icon {
+    transform: translateX(-5px); 
+}
+    </style>
+</head>
+<body>
+    <section id="grade5-schedule" class="container py-5" dir="rtl">
+    <h2 class="table-title"> جدول حصص الصف الخامس الابتدائي</h2>
+    
+    <div class="schedule-section">
+        <table class="modern-schedule-table">
+            <thead>
+                <tr>
+                    <th>اليوم</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="day-cell">الأحد</td>
+                    <td class="subject math">رياضيات</td>
+                    <td class="subject arabic">لغة عربية</td>
+                    <td class="subject science">علوم</td>
+                    <td class="subject english">إنجليزي</td>
+                    <td class="subject social">دراسات</td>
+                    <td class="subject religion">دين</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الاثنين</td>
+                    <td class="subject science">علوم</td>
+                    <td class="subject math">رياضيات</td>
+                    <td class="subject arabic">لغة عربية</td>
+                    <td class="subject ict">ICT</td>
+                    <td class="subject english">إنجليزي</td>
+                    <td class="subject pe">تربية رياضية</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الثلاثاء</td>
+                    <td class="subject social">دراسات</td>
+                    <td class="subject arabic">لغة عربية</td>
+                    <td class="subject math">رياضيات</td>
+                    <td class="subject science">علوم</td>
+                    <td class="subject skills">مهارات مهنية</td>
+                    <td class="subject art">تربية فنية</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الأربعاء</td>
+                    <td class="subject math">رياضيات</td>
+                    <td class="subject english">إنجليزي</td>
+                    <td class="subject arabic">لغة عربية</td>
+                    <td class="subject science">علوم</td>
+                    <td class="subject social">دراسات</td>
+                    <td class="subject ict">ICT</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الخميس</td>
+                    <td class="subject english">إنجليزي</td>
+                    <td class="subject social">دراسات</td>
+                    <td class="subject arabic">لغة عربية</td>
+                    <td class="subject math">رياضيات</td>
+                    <td class="subject religion">دين</td>
+                    <td class="subject discovery">اكتشف</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<section id="grade5-activities" class="container py-5" dir="rtl">
+    <h2 class="activity-title-main"> نادي الأنشطة والابتكار - الصف الخامس</h2>
+    
+    <div class="activity-grid-modern">
+        <div class="act-card">
+            <div class="act-icon"></div>
+            <h4>نادي الفلك والعلوم</h4>
+            <p>استكشاف الفضاء وعمل نماذج علمية</p>
+        </div>
+        <div class="act-card">
+            <div class="act-icon"></div>
+            <h4>نادي الصحافة والإعلام</h4>
+            <p>تصوير وإعداد التقارير المدرسية</p>
+        </div>
+        <div class="act-card">
+            <div class="act-icon"></div>
+            <h4>نادي الشطرنج والذكاء</h4>
+            <p>تنمية مهارات التفكير الاستراتيجي</p>
+        </div>
+        <div class="act-card">
+            <div class="act-icon"></div>
+            <h4>أصدقاء البيئة</h4>
+            <p>التشجير وإعادة التدوير في المدرسة</p>
+        </div>
+    </div>
+</section>
+<div class="pagination-container" dir="rtl">
+    <a href="6.html" class="next-btn">
+        <span>الانتقال للصفحة التالية</span>
+        <i class="arrow-icon">←</i>
+    </a>
+</div>
+</body>
+</html>

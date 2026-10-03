@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الصف الثانى الابتدائى</title>
+    <style>
+        .table-title {
+    text-align: center;
+    color: #4f46e5;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    text-align: center;
+}
+
+.schedule-table th {
+    background-color: #4f46e5;
+    color: white;
+    padding: 18px;
+}
+
+.schedule-table td {
+    padding: 15px;
+    border: 1px solid #f1f5f9;
+    font-weight: 600;
+}
+
+.day {
+    background-color: #f8fafc;
+    color: #1e293b;
+    width: 120px;
+}
+
+.math { background-color: #fff1f2; color: #e11d48; }    
+.arabic { background-color: #f0fdf4; color: #16a34a; }  
+.english { background-color: #eff6ff; color: #2563eb; } 
+.discovery { background-color: #fefce8; color: #ca8a04; } 
+.religion { background-color: #faf5ff; color: #9333ea; } 
+.art { background-color: #fff7ed; color: #ea580c; }     
+.pe { background-color: #f0f9ff; color: #0891b2; }     
+
+.schedule-table tr:hover {
+    background-color: #f8fafc;
+    transition: 0.2s;
+}
+.activity-title-main {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    border-bottom: 3px solid #f43f5e;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.activity-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; 
+    background: transparent;
+}
+
+.activity-table th {
+    background-color: #1e293b;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.activity-table td {
+    padding: 20px;
+    background: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.activity-table tr td:first-child { border-radius: 0 15px 15px 0; }
+.activity-table tr td:last-child { border-radius: 15px 0 0 15px; }
+
+.day-col {
+    background-color: #f1f5f9 !important;
+    color: #475569;
+    font-size: 1.1rem;
+}
+
+.act-sport { color: #2563eb; background: #eff6ff !important; border-right: 5px solid #2563eb; }
+.act-art { color: #db2777; background: #fdf2f8 !important; border-right: 5px solid #db2777; }
+.act-tech { color: #7c3aed; background: #f5f3ff !important; border-right: 5px solid #7c3aed; }
+.act-scout { color: #059669; background: #ecfdf5 !important; border-right: 5px solid #059669; }
+.act-theater { color: #d97706; background: #fffbeb !important; border-right: 5px solid #d97706; }
+
+.act-radio, .act-music, .act-library, .act-science, .act-party {
+    background: #f8fafc !important;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.activity-table tr:hover td {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.pagination-container {
+    text-align: center;
+    margin: 50px 0;
+    padding: 20px;
+}
+
+.next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 35px;
+    background-color: #4f46e5; 
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+    background-color: #3730a3;
+    transform: translateX(-10px); 
+    box-shadow: 0 15px 25px rgba(79, 70, 229, 0.4);
+}
+
+.arrow-icon {
+    font-style: normal;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.next-btn:hover .arrow-icon {
+    transform: translateX(-5px); 
+}
+    </style>
+</head>
+<body>
+    <section id="grade2-schedule" class="container py-5" dir="rtl">
+    <h2 class="table-title">📅 جدول حصص الصف الثاني الابتدائي</h2>
+    
+    <div class="table-responsive">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>اليوم / الحصة</th>
+                    <th>الأولى</th>
+                    <th>الثانية</th>
+                    <th>الثالثة</th>
+                    <th>الرابعة</th>
+                    <th>الخامسة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="day">الأحد</td>
+                    <td class="arabic">لغة عربية</td>
+                    <td class="math">رياضيات</td>
+                    <td class="english">إنجليزي</td>
+                    <td class="discovery">اكتشف</td>
+                    <td class="religion">دين</td>
+                </tr>
+                <tr>
+                    <td class="day">الاثنين</td>
+                    <td class="math">رياضيات</td>
+                    <td class="arabic">لغة عربية</td>
+                    <td class="english">إنجليزي</td>
+                    <td class="pe">تربية رياضية</td>
+                    <td class="art">تربية فنية</td>
+                </tr>
+                <tr>
+                    <td class="day">الثلاثاء</td>
+                    <td class="discovery">اكتشف</td>
+                    <td class="math">رياضيات</td>
+                    <td class="arabic">لغة عربية</td>
+                    <td class="religion">دين</td>
+                    <td class="english">إنجليزي</td>
+                </tr>
+                <tr>
+                    <td class="day">الأربعاء</td>
+                    <td class="arabic">لغة عربية</td>
+                    <td class="english">إنجليزي</td>
+                    <td class="math">رياضيات</td>
+                    <td class="discovery">اكتشف</td>
+                    <td class="pe">تربية رياضية</td>
+                </tr>
+                <tr>
+                    <td class="day">الخميس</td>
+                    <td class="math">رياضيات</td>
+                    <td class="arabic">لغة عربية</td>
+                    <td class="art">نشاط فني</td>
+                    <td class="english">إنجليزي</td>
+                    <td class="discovery">اكتشف</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<section id="weekly-activities" class="container py-5" dir="rtl">
+    <h2 class="activity-title-main">🎭 خطة الأنشطة الأسبوعية</h2>
+    
+    <div class="table-responsive shadow-lg">
+        <table class="activity-table">
+            <thead>
+                <tr>
+                    <th>اليوم</th>
+                    <th>النشاط الأول (صباحي)</th>
+                    <th>النشاط الثاني (مسائي)</th>
+                    <th>ملاحظات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="day-col">الأحد</td>
+                    <td class="act-sport">⚽ كرة قدم / كره سلة</td>
+                    <td class="act-radio">📢 تدريب الإذاعة</td>
+                    <td>الملاعب الخارجية</td>
+                </tr>
+                <tr>
+                    <td class="day-col">الاثنين</td>
+                    <td class="act-art">🎨 ورشة الرسم والتلوين</td>
+                    <td class="act-music">🎵 كورال الموسيقى</td>
+                    <td>مرسم المدرسة</td>
+                </tr>
+                <tr>
+                    <td class="day-col">الثلاثاء</td>
+                    <td class="act-tech">💻 نادي البرمجة الصغير</td>
+                    <td class="act-library">📖 مسابقة القراءة</td>
+                    <td>معمل الحاسب</td>
+                </tr>
+                <tr>
+                    <td class="day-col">الأربعاء</td>
+                    <td class="act-scout">⛺ الكشافة والجوالة</td>
+                    <td class="act-science">🧪 نادي العلوم</td>
+                    <td>فناء المدرسة</td>
+                </tr>
+                <tr>
+                    <td class="day-col">الخميس</td>
+                    <td class="act-theater">🎭 المسرح المدرسي</td>
+                    <td class="act-party">🎉 الحفل الأسبوعي</td>
+                    <td>مسرح المدرسة</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<div class="pagination-container" dir="rtl">
+    <a href="3.html" class="next-btn">
+        <span>الانتقال للصفحة التالية</span>
+        <i class="arrow-icon">←</i>
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مدرسة بهاء الدين الابتدائية - الحضور والدرجات</title>
+<style>
+:root{--bg:#eef3f8;--card:#fff;--ink:#14263b;--mut:#5d6f84;--line:#d5dfea;--navy:#17446b;--gold:#f2b705;--ok:#1f8a4c;--bad:#c93a3a;--late:#c98a0b;--exc:#3b6fb6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a26;--card:#17273a;--ink:#e6eef7;--mut:#9fb2c7;--line:#2b4058;--navy:#0c2640;--ok:#4cc17f;--bad:#ef6f6f;--late:#e2b24a;--exc:#6fa3e6}}
+:root[data-theme="dark"]{--bg:#0f1a26;--card:#17273a;--ink:#e6eef7;--mut:#9fb2c7;--line:#2b4058;--navy:#0c2640;--ok:#4cc17f;--bad:#ef6f6f;--late:#e2b24a;--exc:#6fa3e6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.6 Tajawal,Tahoma,Arial,sans-serif}
+header{background:var(--navy);color:#fff;padding:18px 16px;border-bottom:5px solid var(--gold)}
+header h1{margin:0;font-size:1.5rem;font-weight:800}
+header p{margin:2px 0 0;color:#cfdcea;font-size:.95rem}
+nav{display:flex;gap:6px;padding:10px 12px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav button{flex:1;min-width:max-content;border:0;background:transparent;color:var(--mut);font:700 1rem Tajawal,Tahoma,sans-serif;padding:10px 14px;border-radius:8px;cursor:pointer}
+nav button.on{background:var(--navy);color:#fff}
+main{max-width:980px;margin:0 auto;padding:14px 12px 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-bottom:12px}
+label{display:flex;flex-direction:column;font-size:.88rem;color:var(--mut);gap:4px;flex:1;min-width:140px}
+input,select{font:500 1rem Tajawal,Tahoma,sans-serif;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);width:100%}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.btn{border:0;background:var(--navy);color:#fff;padding:10px 16px;border-radius:8px;font:700 1rem Tajawal,Tahoma,sans-serif;cursor:pointer}
+.btn.alt{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+@media (prefers-color-scheme:dark){.btn.alt{color:var(--ink);border-color:var(--mut)}}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:480px}
+th,td{padding:9px 8px;text-align:right;border-bottom:1px solid var(--line)}
+th{font-size:.88rem;color:var(--mut);font-weight:700}
+.st{display:flex;gap:5px;flex-wrap:wrap}
+.st button{border:1px solid var(--line);background:var(--card);color:var(--mut);padding:6px 10px;border-radius:7px;font:700 .9rem Tajawal,Tahoma,sans-serif;cursor:pointer}
+.st button.p.on{background:var(--ok);color:#fff;border-color:var(--ok)}
+.st button.a.on{background:var(--bad);color:#fff;border-color:var(--bad)}
+.st button.l.on{background:var(--late);color:#fff;border-color:var(--late)}
+.st button.e.on{background:var(--exc);color:#fff;border-color:var(--exc)}
+td input[type=number]{width:90px}
+.sum{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.sum span{background:var(--bg);border-radius:8px;padding:6px 12px;font-weight:700}
+.empty{color:var(--mut);padding:18px;text-align:center}
+.del{background:none;border:0;color:var(--bad);cursor:pointer;font:700 .9rem Tajawal,Tahoma,sans-serif}
+.good{color:var(--ok);font-weight:800}.warn{color:var(--bad);font-weight:800}
+.note{color:var(--mut);font-size:.85rem;margin:0}
+@media print{header,nav,.noprint{display:none!important}body{background:#fff;color:#000}.card{border:0}}
+</style>
+</head>
+<body>
+<header><h1>مدرسة بهاء الدين الابتدائية</h1><p>برنامج الحضور والغياب ورصد الدرجات</p></header>
+<nav id="nav"></nav>
+<main id="app"></main>
+<a href="index.html" class="finish-btn">العودة للرئيسية </a>
+
+
+<script>
+const GRADES=["الصف الأول","الصف الثاني","الصف الثالث","الصف الرابع","الصف الخامس","الصف السادس"];
+const SUBJ=["اللغة العربية","الرياضيات","اللغة الإنجليزية","العلوم","الدراسات الاجتماعية","التربية الدينية"];
+const TERMS=["الفصل الدراسي الأول","الفصل الدراسي الثاني"];
+const STAT={p:"حاضر",a:"غائب",l:"متأخر",e:"بعذر"};
+const TABS=[["students","الطلاب"],["att","الحضور والغياب"],["grades","رصد الدرجات"],["report","التقارير"]];
+let S={students:[],att:{},grades:{},max:{}};
+try{const r=localStorage.getItem("bahaa_school");if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+const save=()=>{try{localStorage.setItem("bahaa_school",JSON.stringify(S))}catch(e){}};
+let tab="students",cls=GRADES[0],date=new Date().toISOString().slice(0,10),term=TERMS[0],subj=SUBJ[0];
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const list=()=>S.students.filter(s=>s.cls===cls);
+const opts=(arr,v)=>arr.map(x=>`<option ${x===v?"selected":""}>${esc(x)}</option>`).join("");
+const clsSel=()=>`<label>الصف<select onchange="cls=this.value;draw()">${opts(GRADES,cls)}</select></label>`;
+const empty=()=>`<div class="empty">لا يوجد طلاب في هذا الصف. أضف الطلاب من تبويب «الطلاب».</div>`;
+
+function draw(){
+  $("#nav").innerHTML=TABS.map(t=>`<button class="${t[0]===tab?"on":""}" onclick="tab='${t[0]}';draw()">${t[1]}</button>`).join("");
+  $("#app").innerHTML=({students:vStudents,att:vAtt,grades:vGrades,report:vReport})[tab]();
+}
+
+function vStudents(){
+  const l=list();
+  return `<div class="card noprint"><div class="row">${clsSel()}
+  <label>اسم الطالب<input id="nm" placeholder="الاسم الرباعي" onkeydown="if(event.key==='Enter')addSt()"></label>
+  <button class="btn" onclick="addSt()">إضافة طالب</button></div>
+  <p class="note">يمكنك لصق عدة أسماء دفعة واحدة، كل اسم في سطر، من خلال الزر التالي.</p>
+  <p><button class="btn alt" onclick="bulk()">إضافة مجموعة أسماء</button></p></div>
+  <div class="card"><h3>${cls} — ${l.length} طالب</h3>${l.length?`<div class="wrap"><table><tr><th>م</th><th>الاسم</th><th class="noprint"></th></tr>
+  ${l.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.name)}</td><td class="noprint"><button class="del" onclick="delSt('${s.id}')">حذف</button></td></tr>`).join("")}</table></div>`:empty()}</div>`;
+}
+function addSt(){const v=$("#nm").value.trim();if(!v)return;S.students.push({id:Date.now()+""+Math.random().toString(36).slice(2,5),name:v,cls});save();draw();$("#nm").focus()}
+function bulk(){const t=prompt("الصق الأسماء، كل اسم في سطر:");if(!t)return;t.split("\n").map(x=>x.trim()).filter(Boolean).forEach((n,i)=>S.students.push({id:Date.now()+"_"+i,name:n,cls}));save();draw()}
+function delSt(id){if(!confirm("هل تريد حذف الطالب وكل بياناته؟"))return;S.students=S.students.filter(s=>s.id!==id);
+  Object.values(S.att).forEach(d=>delete d[id]);
+  Object.values(S.grades).forEach(t=>Object.values(t).forEach(s=>delete s[id]));save();draw()}
+
+function vAtt(){
+  const l=list(),rec=S.att[date]||{};
+  const cnt=k=>l.filter(s=>rec[s.id]===k).length;
+  return `<div class="card"><div class="row">${clsSel()}<label>التاريخ<input type="date" value="${date}" onchange="date=this.value;draw()"></label>
+  <button class="btn alt noprint" onclick="allP()">تحضير الجميع</button></div>
+  ${l.length?`<div class="sum"><span class="good">حاضر: ${cnt("p")}</span><span class="warn">غائب: ${cnt("a")}</span><span>متأخر: ${cnt("l")}</span><span>بعذر: ${cnt("e")}</span></div>
+  <div class="wrap"><table><tr><th>م</th><th>الاسم</th><th>الحالة</th></tr>
+  ${l.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.name)}</td><td><div class="st">${Object.keys(STAT).map(k=>`<button class="${k} ${rec[s.id]===k?"on":""}" onclick="setA('${s.id}','${k}')">${STAT[k]}</button>`).join("")}</div></td></tr>`).join("")}</table></div>`:empty()}</div>`;
+}
+function setA(id,k){(S.att[date]=S.att[date]||{})[id]=k;save();draw()}
+function allP(){const r=(S.att[date]=S.att[date]||{});list().forEach(s=>r[s.id]="p");save();draw()}
+
+function vGrades(){
+  const l=list(),key=term+"|"+subj,mx=S.max[key]||20,g=((S.grades[term]||{})[subj])||{};
+  return `<div class="card"><div class="row">${clsSel()}
+  <label>الفصل الدراسي<select onchange="term=this.value;draw()">${opts(TERMS,term)}</select></label>
+  <label>المادة<select onchange="subj=this.value;draw()">${opts(SUBJ,subj)}</select></label>
+  <label>الدرجة النهائية<input type="number" min="1" value="${mx}" onchange="setMax(this.value)"></label></div>
+  ${l.length?`<div class="wrap"><table><tr><th>م</th><th>الاسم</th><th>الدرجة من ${mx}</th></tr>
+  ${l.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.name)}</td><td><input type="number" min="0" max="${mx}" step="0.5" value="${g[s.id]??""}" onchange="setG('${s.id}',this.value)"></td></tr>`).join("")}</table></div>`:empty()}</div>`;
+}
+function setMax(v){S.max[term+"|"+subj]=Math.max(1,+v||20);save();draw()}
+function setG(id,v){const mx=S.max[term+"|"+subj]||20,o=((S.grades[term]=S.grades[term]||{})[subj]=S.grades[term][subj]||{});
+  if(v===""){delete o[id]}else{let n=+v;if(n>mx){alert("الدرجة أكبر من الدرجة النهائية ("+mx+")");n=mx}o[id]=Math.max(0,n)}save();draw()}
+
+function vReport(){
+  const l=list();
+  const rows=l.map((s,i)=>{
+    const c={p:0,a:0,l:0,e:0};Object.values(S.att).forEach(d=>{if(d[s.id])c[d[s.id]]++});
+    const tot=c.p+c.a+c.l+c.e,rate=tot?Math.round((c.p+c.l)/tot*100):null;
+    let sc=0,mxs=0;const cells=SUBJ.map(sj=>{const v=((S.grades[term]||{})[sj]||{})[s.id];if(v===undefined)return"<td>-</td>";const m=S.max[term+"|"+sj]||20;sc+=v;mxs+=m;return`<td>${v}/${m}</td>`}).join("");
+    const pc=mxs?Math.round(sc/mxs*100):null;
+    return `<tr><td>${i+1}</td><td>${esc(s.name)}</td><td>${c.p}</td><td class="${c.a>3?"warn":""}">${c.a}</td><td>${rate===null?"-":rate+"%"}</td>${cells}<td><b>${pc===null?"-":pc+"%"}</b></td></tr>`}).join("");
+  return `<div class="card"><div class="row">${clsSel()}<label>الفصل الدراسي<select onchange="term=this.value;draw()">${opts(TERMS,term)}</select></label>
+  <button class="btn noprint" onclick="window.print()">طباعة التقرير</button><button class="btn alt noprint" onclick="exportCSV()">تصدير Excel</button><button class="btn alt noprint" onclick="backup()">نسخة احتياطية</button><button class="btn alt noprint" onclick="$('#rf').click()">استعادة نسخة</button><input id="rf" type="file" accept=".json" hidden onchange="restore(this)"></div>
+  ${l.length?`<div class="wrap"><table style="min-width:820px"><tr><th>م</th><th>الاسم</th><th>أيام الحضور</th><th>أيام الغياب</th><th>نسبة الحضور</th>${SUBJ.map(x=>`<th>${x}</th>`).join("")}<th>النسبة العامة</th></tr>${rows}</table></div>
+  <p class="note">يُظهر الغياب بالأحمر إذا تجاوز 3 أيام. نسبة الحضور تحتسب المتأخر حاضرًا والغياب بعذر غيابًا.</p>`:empty()}</div>`;
+}
+function dl(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();a.remove()}
+function exportCSV(){
+  const head=["م","الاسم","أيام الحضور","أيام الغياب","نسبة الحضور %",...SUBJ,"النسبة العامة %"];
+  const out=[head];
+  list().forEach((s,i)=>{
+    const c={p:0,a:0,l:0,e:0};Object.values(S.att).forEach(d=>{if(d[s.id])c[d[s.id]]++});
+    const tot=c.p+c.a+c.l+c.e;let sc=0,mx=0;
+    const g=SUBJ.map(sj=>{const v=((S.grades[term]||{})[sj]||{})[s.id];if(v===undefined)return"";sc+=v;mx+=S.max[term+"|"+sj]||20;return v});
+    out.push([i+1,s.name,c.p,c.a,tot?Math.round((c.p+c.l)/tot*100):"",...g,mx?Math.round(sc/mx*100):""]);
+  });
+  const csv="\ufeff"+out.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(",")).join("\n");
+  dl("تقرير-"+cls+".csv",csv,"text/csv;charset=utf-8");
+}
+function backup(){dl("نسخة-احتياطية-"+new Date().toISOString().slice(0,10)+".json",JSON.stringify(S),"application/json")}
+function restore(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.students))throw 0;if(!confirm("سيتم استبدال البيانات الحالية بالنسخة المختارة. متابعة؟"))return;S=Object.assign({students:[],att:{},grades:{},max:{}},d);save();draw()}catch(e){alert("الملف غير صالح")}};r.readAsText(f)}
+
+draw();
+</script>
+</body>
+</html>

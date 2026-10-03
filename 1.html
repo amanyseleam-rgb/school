@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الصف الاول الابتدائي</title>
+</head>
+<style>
+    .table-title {
+    text-align: center;
+    color: #4f46e5;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.table-responsive {
+    overflow-x: auto; 
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    text-align: center;
+}
+
+.schedule-table th {
+    background-color: #4f46e5;
+    color: white;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+.schedule-table td {
+    padding: 15px;
+    border: 1px solid #eee;
+    font-weight: 500;
+}
+
+.day {
+    background-color: #f8fafc;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+
+.math { background-color: #fff1f2; color: #e11d48; }    
+.arabic { background-color: #f0fdf4; color: #16a34a; }  
+.english { background-color: #eff6ff; color: #2563eb; } 
+.discovery { background-color: #fefce8; color: #ca8a04; } 
+.religion { background-color: #faf5ff; color: #9333ea; } 
+.art { background-color: #fff7ed; color: #ea580c; }     
+.pe { background-color: #f0f9ff; color: #0891b2; }      
+
+
+.schedule-table tr:hover {
+    background-color: #f1f5f9;
+    transition: 0.3s;
+}
+.activity-title {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+}
+
+.activity-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.time {
+    min-width: 80px;
+    font-weight: bold;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.activity-content {
+    flex: 1;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-right: 6px solid #ccc;
+    transition: transform 0.3s ease;
+}
+
+.activity-content:hover {
+    transform: scale(1.02);
+}
+
+.activity-content h4 {
+    margin: 0;
+    color: #334155;
+    font-size: 1.1rem;
+}
+
+.activity-content p {
+    margin: 5px 0 0;
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.icon {
+    font-size: 2rem;
+}
+
+.radio { border-right-color: #f43f5e; }
+.sports { border-right-color: #3b82f6; }
+.art { border-right-color: #ec4899; }
+.library { border-right-color: #10b981; }
+.tech { border-right-color: #8b5cf6; }
+.pagination-container {
+    text-align: center;
+    margin: 50px 0;
+    padding: 20px;
+}
+
+.next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 35px;
+    background-color: #4f46e5; 
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+    background-color: #3730a3;
+    transform: translateX(-10px); 
+    box-shadow: 0 15px 25px rgba(79, 70, 229, 0.4);
+}
+
+.arrow-icon {
+    font-style: normal;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.next-btn:hover .arrow-icon {
+    transform: translateX(-5px); 
+}
+</style>
+<body>
+    
+    <section id="grade1-schedule" class="container py-5" dir="rtl">
+    <h2 class="table-title"> جدول حصص الصف الأول الابتدائي</h2>
+    
+    <div class="table-responsive">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>اليوم / الحصة</th>
+                    <th>الأولى</th>
+                    <th>الثانية</th>
+                    <th>الثالثة</th>
+                    <th>الرابعة</th>
+                    <th>الخامسة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="day">الأحد</td>
+                    <td class="math">عربى</td>
+                    <td class="arabic">حساب </td>
+                    <td class="english">دين</td>
+                    <td class="religion">العاب</td>
+                    <td class="art">رسم</td>
+                </tr>
+                <tr>
+                    <td class="day">الاثنين</td>
+                    <td class="arabic">لغة عربية</td>
+                    <td class="math">رياضيات</td>
+                    <td class="discovery">اكتشف</td>
+                    <td class="english">إنجليزي</td>
+                    <td class="pe">رياضة بدنية</td>
+                </tr>
+                <tr>
+                    <td class="day">الثلاثاء</td>
+                    <td class="english">إنجليزي</td>
+                    <td class="arabic">لغة عربية</td>
+                    <td class="math">رياضيات</td>
+                    <td class="discovery">اكتشف</td>
+                    <td class="religion">دين</td>
+                </tr>
+                </tbody>
+        </table>
+
+    </div>
+    
+</section>
+<section id="activities-schedule" class="container py-5" dir="rtl">
+    <h2 class="activity-title"> جدول الأنشطة الطلابية (المرحلة الابتدائية)</h2>
+    
+    <div class="activity-grid">
+        <div class="activity-item">
+            <div class="time">07:30 ص</div>
+            <div class="activity-content radio">
+                <span class="icon"></span>
+                <h4>الإذاعة المدرسية</h4>
+                <p>تنمية مهارات الإلقاء والثقة بالنفس</p>
+            </div>
+        </div>
+
+        <div class="activity-item">
+            <div class="time">09:00 ص</div>
+            <div class="activity-content sports">
+                <span class="icon"></span>
+                <h4>النشاط الرياضي</h4>
+                <p>تمارين صباحية ومباريات ودية</p>
+            </div>
+        </div>
+
+        <div class="activity-item">
+            <div class="time">11:00 ص</div>
+            <div class="activity-content art">
+                <span class="icon"></span>
+                <h4>التربية الفنية</h4>
+                <p>رسم، أشغال يدوية، وتلوين</p>
+            </div>
+        </div>
+
+        <div class="activity-item">
+            <div class="time">12:30 م</div>
+            <div class="activity-content library">
+                <span class="icon"></span>
+                <h4>حصة القراءة</h4>
+                <p>وقت القصة الحرة في مكتبة المدرسة</p>
+            </div>
+        </div>
+
+        <div class="activity-item">
+            <div class="time">01:30 م</div>
+            <div class="activity-content tech">
+                <span class="icon"></span>
+                <h4>نادي التكنولوجيا</h4>
+                <p>تعلم أساسيات الكمبيوتر والألعاب التعليمية</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="pagination-container" dir="rtl">
+    <a href="2.html" class="next-btn">
+        <span>الانتقال للصفحة التالية</span>
+        <i class="arrow-icon">←</i>
+    </a>
+</div>
+
+</body>
+</html>

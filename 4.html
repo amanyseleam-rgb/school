@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الصف الرابع ونادي الأنشطة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc; 
+            color: #334155;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .py-5 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .table-title, .activity-title-main {
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            font-weight: 900;
+            font-size: 2.3rem;
+        }
+
+        .schedule-section {
+            background: #ffffff; 
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            overflow-x: auto; 
+        }
+
+        .modern-schedule-table {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 10px; 
+        }
+        
+        .modern-schedule-table th {
+            background: #1e293b;
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .day-cell {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 700;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .subject {
+            padding: 16px;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: 0.3s all ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            cursor: default;
+        }
+        
+        .subject::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            opacity: 0.8;
+        }
+
+        .math { background-color: #fff1f2; color: #e11d48; } .math::after { background-color: #e11d48; }   
+        .arabic { background-color: #f0fdf4; color: #16a34a; } .arabic::after { background-color: #16a34a; }  
+        .english { background-color: #eff6ff; color: #2563eb; } .english::after { background-color: #2563eb; } 
+        .discovery { background-color: #fefce8; color: #ca8a04; } .discovery::after { background-color: #ca8a04; } 
+        .religion { background-color: #faf5ff; color: #9333ea; } .religion::after { background-color: #9333ea; }  
+        .pe { background-color: #f0f9ff; color: #0284c7; } .pe::after { background-color: #0284c7; }         
+        .art { background-color: #fff7ed; color: #ea580c; } .art::after { background-color: #ea580c; }         
+        .science { background-color: #ecfdf5; color: #0d9488; } .science::after { background-color: #0d9488; }  
+        .social { background-color: #fffbeb; color: #d97706; } .social::after { background-color: #d97706; }    
+        .ict { background-color: #f5f3ff; color: #7c3aed; } .ict::after { background-color: #7c3aed; }         
+        .skills { background-color: #fff1f2; color: #be123c; } .skills::after { background-color: #be123c; }  
+
+        .activity-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .act-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+            transition: 0.3s ease;
+            border: 1px solid #e2e8f0;
+            border-bottom: 5px solid #2563eb; 
+        }
+
+        .act-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.1);
+        }
+
+        .act-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .act-card h4 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .act-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .pagination-container {
+            text-align: center;
+            margin: 50px 0;
+            padding: 20px;
+        }
+
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .next-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .arrow-icon {
+            font-style: normal;
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .next-btn:hover .arrow-icon {
+            transform: translateX(-5px); 
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .table-title, .activity-title-main { font-size: 1.6rem; }
+            .schedule-section { padding: 15px; }
+            .modern-schedule-table th, .subject { padding: 10px 5px; font-size: 0.8rem; }
+            .next-btn { padding: 14px 30px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section id="grade4-schedule" class="py-5" dir="rtl">
+            <h2 class="table-title">جدول حصص الصف الرابع الابتدائي</h2>
+            
+            <div class="schedule-section">
+                <table class="modern-schedule-table">
+                    <thead>
+                        <tr>
+                            <th>اليوم</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="day-cell">الأحد</td>
+                            <td class="subject math">رياضيات</td>
+                            <td class="subject science">علوم</td>
+                            <td class="subject arabic">عربي</td>
+                            <td class="subject english">إنجليزي</td>
+                            <td class="subject social">دراسات</td>
+                            <td class="subject religion">دين</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">الاثنين</td>
+                            <td class="subject arabic">عربي</td>
+                            <td class="subject math">رياضيات</td>
+                            <td class="subject ict">ICT (حاسب)</td>
+                            <td class="subject science">علوم</td>
+                            <td class="subject english">إنجليزي</td>
+                            <td class="subject pe">بدنية</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">الثلاثاء</td>
+                            <td class="subject social">دراسات</td>
+                            <td class="subject arabic">عربي</td>
+                            <td class="subject math">رياضيات</td>
+                            <td class="subject science">علوم</td>
+                            <td class="subject skills">مهارات</td>
+                            <td class="subject art">رسم</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">الأربعاء</td>
+                            <td class="subject math">رياضيات</td>
+                            <td class="subject english">إنجليزي</td>
+                            <td class="subject arabic">عربي</td>
+                            <td class="subject ict">ICT (حاسب)</td>
+                            <td class="subject science">علوم</td>
+                            <td class="subject religion">دين</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">الخميس</td>
+                            <td class="subject english">إنجليزي</td>
+                            <td class="subject social">دراسات</td>
+                            <td class="subject arabic">عربي</td>
+                            <td class="subject math">رياضيات</td>
+                            <td class="subject skills">مهارات</td>
+                            <td class="subject discovery">اكتشف</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="grade4-activities" class="py-5" dir="rtl">
+            <h2 class="activity-title-main"> نادي الأنشطة - الصف الرابع</h2>
+            
+            <div class="activity-grid-modern">
+                <div class="act-card">
+                    <div class="act-icon"></div>
+                    <h4>نادي العلوم</h4>
+                    <p>تجارب كيميائية بسيطة (المعمل)</p>
+                </div>
+                <div class="act-card">
+                    <div class="act-icon"></div>
+                    <h4>المبرمج الصغير</h4>
+                    <p>أساسيات سكراتش (معمل الحاسب)</p>
+                </div>
+                <div class="act-card">
+                    <div class="act-icon"></div>
+                    <h4>منتخب المدرسة</h4>
+                    <p>تدريبات كرة السلة (الملعب)</p>
+                </div>
+                <div class="act-card">
+                    <div class="act-icon"></div>
+                    <h4>الفنون التشكيلية</h4>
+                    <p>ورشة النحت والرسم (المرسم)</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="pagination-container" dir="rtl">
+            <a href="5.html" class="next-btn">
+                <span>الانتقال للصفحة التالية</span>
+                <i class="arrow-icon">←</i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
